@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error Page</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #000;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        .error-container {
+            text-align: center;
+        }
+        .error-code {
+            font-size: 100px;
+            font-weight: bold;
+        }
+        .error-message {
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div id="content" class="error-container">
+        <!-- Content will be dynamically updated -->
+    </div>
+
+    <script>
+        const currentPath = window.location.pathname; // Get the path from the URL
+        const contentDiv = document.getElementById('content');
+
+        // Extract error code from the URL (if present)
+        const errorCodeMatch = currentPath.match(/\/(\d{3})/); // Looks for /XXX where XXX is a 3-digit number
+        const errorCode = errorCodeMatch ? errorCodeMatch[1] : '404'; // Default to 404 if no code is found
+
+        // Update the page content dynamically
+        contentDiv.innerHTML = `
+            <div>
+                <div class="error-code">${errorCode}</div>
+                <div class="error-message">This page could not be found.</div>
+            </div>`;
+    </script>
+</body>
+</html>
