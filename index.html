@@ -47,6 +47,16 @@
                 <div class="error-code">${errorCode}</div>
                 <div class="error-message">This page could not be found.</div>
             </div>`;
+        document.addEventListener("DOMContentLoaded", function () {
+        const elementToRemove = Array.from(document.querySelectorAll("*")).find(el => 
+            el.textContent.includes("shared with YHub.net") && 
+            el.innerHTML.includes("Try it for free")
+        );
+
+        if (elementToRemove) {
+            elementToRemove.remove();
+        }
+    });
     </script>
 </body>
 </html>
